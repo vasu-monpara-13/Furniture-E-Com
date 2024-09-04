@@ -24,7 +24,7 @@ let slide = document.querySelectorAll(".brand");
 
  cards.forEach(function(card){
     card.addEventListener("click", function(){
-        window.open("https://www.wakefit.co/search-result?q=sofa", "_blank")
+        window.open("https://vasu-monpara-13.github.io/Furniture-E-Com/", "_blank")
     })
  })
 
