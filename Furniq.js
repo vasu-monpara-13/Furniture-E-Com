@@ -1,4 +1,4 @@
-let slide = document.querySelectorAll(".brand");
+ let slide = document.querySelectorAll(".brand");
  let cards = document.querySelectorAll(".card");
  let bar = document.getElementById("bar")
 
