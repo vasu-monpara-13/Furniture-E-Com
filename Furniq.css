@@ -81,9 +81,9 @@ ul li a:hover{
     color: white;
 }
 .mainText button:hover{
-    border: 2px solid #0A214A;
+    border: 2px solid #F5A705;
     background-color: transparent;
-    color: #0A214A;
+    color: #F5A705;
     cursor: pointer;
 }
 .shop{
@@ -97,25 +97,31 @@ ul li a:hover{
     background-color: white;
     margin-inline: 20px;
     margin-top: 22px;
+    border-radius:15px; 
     cursor: pointer;
 }
 .card img{
     width: 100%;
     height: 220px;
-    border-radius: 3px;
+    border-radius: 15px;
 }
 .card p{
     margin-left: 11px;
     margin-top: 11px;
 }
+.card:hover{
+box-shadow: 0 0 8px #0A214A;
+transform: scale(1.1); 
+cursor: pointer;
+}
 .head{
     text-align: center;
-    color: #0A214A;
-    padding: 85px;
+    color: #F5A705;
+    padding: 100px;
 
 }
 .head span{
-    color: #F5A705;
+    color: #0A214A;
 }
 .arrivals{
     display: flex;
@@ -127,14 +133,13 @@ ul li a:hover{
     height: 340px;
     background-color: #fff;
     margin-inline: 20px;
-    border-radius: 5px;
+    border-radius: 15px;
     margin-top: 22px;
-
 }
 .arrivalCard img{
     width: 100%;
     height: 220px;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 .arrivalCard h3{
     margin-top: 11px;
@@ -143,6 +148,11 @@ ul li a:hover{
 .arrivalCard p{
     margin-top: 11px;
     margin-left: 11px;
+}
+.arrivalCard:hover{
+box-shadow: 0 0 8px #0A214A;
+transform: scale(1.1); 
+cursor: pointer;
 }
 .partners{
     width: 400px;
@@ -155,7 +165,6 @@ ul li a:hover{
 .partners .brand{
     width: 100%;
     height: 100%;
-    /* background-color: #fff; */
     text-align: center;
     position: absolute;
     transition: all 1s ease;
@@ -177,7 +186,7 @@ ul li a:hover{
 .about img{
     width: 300px;
 
-    border-radius: 6px;
+    border-radius: 15px;
 }
 .aboutText p{
     margin-top: 22px;
@@ -193,7 +202,7 @@ ul li a:hover{
     justify-content: space-around;
     padding: 55px;
     margin-top: 66px;
-    background-color: black;
+    background-color: #0A214A;
     color: #F5A705;
 
 }
@@ -244,3 +253,4 @@ ul li a:hover{
         width: 90%;
     }
 }
+\
