@@ -220,6 +220,10 @@ cursor: pointer;
         font-size: 25px;
         cursor: pointer;
     }
+    .main{
+        background-size: contain;
+        background-position: top;
+    }
     .showData{
         display: flex;
         flex-direction: column;
