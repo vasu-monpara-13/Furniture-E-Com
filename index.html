@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furniture</title>
-    <link href="Furniq.css" rel="stylesheet">
-    <head>
+    <link href="Furniq css.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -19,109 +18,222 @@
 
         <nav>
             <div class="logo">
-                 <img src="Logo.png" height="80" width="200">
+                 <img src="file:///E:/Wallpapers/Logo.png" height="80" width="200">
             </div>
             <ul>
-                <li><a href="#shop">Shop</a></li>
-                <li><a href="#arrival">New Arrival</a></li>
-                <li><a href="#categories">Categories</a></li>
+                <li> <a href="#shop">Shop</a></li>
+                <li> <a href="#arrival">New Arrival</a></li>
+                <li> <a href="#categories">Categories</a>
+                    <ul class="dropdown" id="categories-dropdown"> 
+                    </ul>
+                </li>
                 <li><a href="#partner">Our Partners</a></li>
                 <li><a href="#about">About Us</a></li>
-
             </ul>
-	
-	<div class="icons">
-	   <div class="fa fa-search" id="search-btn"></div>
-	   <div class="fa fa-shopping-cart" id="search-btn"></div>
-	   <div class="fa fa-user" id="login-btn"></div>
-	   <div class="fa fa-bars" id="menu-btn"></div>
-	</div>
+
+		<div class="icons">
+		<div class="fa fa-home" id="home-btn"></div>
+   		<div class="fa fa-search" id="search-btn"></div>
+  		<div class="fa fa-shopping-cart" id="cart-btn">
+    			<span class="red-dot" id="cart-count">0</span>
+		</div>
+   		<div class="fa fa-user" id="login-btn"></div>
+		</div>
+
+
+<div class="search-container" id="search-container" style="display:none;">
+
+    <input id="searchbar" class="inputBox" onkeyup="search_furniture()" type="text" name="search" placeholder="Search Furniture...">
+
+	  <button class="fa fa-search" id="search-btn" onclick="searchProduct()"></button>
+
+   <ul id="suggestions" class="suggestions-container"></ul>
+
+</div>
 
             <i id="bar" class="fa-solid fa-bars"></i>
-		
- </nav>
-        <div class="main">
+	
+</nav>
+
+
+
+
+<div class="cart-container">
+    <div class="cart-header">
+        <h2>My Cart</h2>
+    </div>
+
+    <div class="empty-cart-msg" id="empty-cart-msg" style="display: none;">Cart Is Empty</div>
+
+	<div id="cart-items"></div>
+   
+    <div class="cart-footer">
+        <p>Subtotal: $<span id="subtotal">0.00</span></p>
+        <p>Tax (18%): $<span id="tax">0.00</span></p>
+        <p>Total: $<span id="total">0.00</span></p>
+        <div class="cart-buttons">
+            <button onclick="clearCart()" id="clear-cart">Clear Cart</button>
+            <button onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+	
+	
+</div>
+
+
+
+
+
+
+<!-- Add this section before the closing </body> tag -->
+<div class="modal" id="loginModal" style="display: none;">
+    <h2>User Login</h2> </br></br>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button onclick="login()">Login</button>
+    <p>Don't have an account? <span id="showRegister" style="cursor:pointer;color:blue;">Register here</span></p>
+    <p>Admin? <span id="showAdminLogin" style="cursor:pointer;color:blue;">Admin login here</span></p>
+</div>
+
+<div class="modal" id="registerModal" style="display: none;">
+    <h2>Register</h2></br></br>
+    <input type="text" id="regUsername" placeholder="Username" required>
+    <input type="password" id="regPassword" placeholder="Password" required>
+    <button onclick="register()">Register</button>
+    <p>Already have an account? <span id="showLogin" style="cursor:pointer;color:blue;">Login here</span></p>
+</div>
+
+<div class="modal" id="adminModal" style="display: none;">
+    <h2>Admin Login</h2></br></br>
+    <input type="text" id="adminUsername" placeholder="Admin Username" required>
+    <input type="password" id="adminPassword" placeholder="Admin Password" required>
+    <button onclick="adminLogin()">Login</button>
+    <p>Return to <span id="showUserLogin" style="cursor:pointer;color:blue;">User Login</span></p>
+</div>
+
+<div class="add-product-modal" id="productForm" style="display: none;">
+    <h2>Add New Product</h2></br></br>
+    <input type="text" id="productName" placeholder="Product Name" required>
+    <input type="number" id="productPrice" placeholder="Price" required>
+    <input type="file" id="productImage" accept="image/*" required>
+    <button id="addProductBtn">Add Product</button>
+</div>
+
+           <div class="added" id="productList">
+            <div class="productdisplay">
+            </div>
+        </div>
+
+
+<div class="main" id="main">
+
             <div class="mainText">
 
                 <h1>Crafting Comfort,<br><span>Defining Style.</span></h1>
-            <a href="#shop">
-		<button>Buy Now</button> </a>
+           
+		<button id="shopnow-btn">Shop Now</button> 
             </div>
         </div>
 
-        <div id="shop">
+        <div class="shophead" id="shop">
             <div class="head">
                 <h1>Shop <span>Now</span></h1>
             </div>
+
           <div class="shop">
-                <div class="card">
-                    <img src="sofa2.jpeg" alt="">
-             <p>Luxury Sofa's</p>
-             <p>Starting At ₹1,49,999 Only</p>
+                
+             <div class="card" id="sofa">
+             <img src="file:///E:/Wallpapers/sofa2.jpeg" class="product-image" alt="">
+             <h4 class="product-name">Luxury Sofa</h4>
+             <p class="product-price">₹1,49,999</p>
              <p>Feel Comfort</p>
- 
+ 	<div class="fa fa-cart-plus cart-icon" onclick="addToCart(0)"></div>
+
+	     
+
         </div>
-                <div class="card">
-                    <img src="chair2.jpeg" alt="">
-                    <p>Luxury Chair's</p>
-                    <p>Starting At ₹49,999 Only</p>
-                    <p>Feel Comfort</p>
+                <div class="card" id="chair">
+                   <img src="file:///E:/Wallpapers/chair2.jpeg" class="product-image" alt="">
+                    <h4 class="product-name">Luxury Chair</h4>
+                    <p class="product-price">₹49,999</p>
+			<p>Feel Comfort</p>
+		     <div class="fa fa-cart-plus cart-icon" onclick="addToCart(1)"></div>
 
+		 
                 </div>
-               <div class="card">
-                    <img src="table3.jpeg" alt="">
-                    <p>Luxury Dinning Table's</p>
-                    <p>Starting At ₹69,999 Only</p>
-                    <p>Feel Comfort</p>
+               <div class="card" id="table">
+                   <img src="file:///E:/Wallpapers/table3.jpeg" class="product-image" alt="">
+                    <h4 class="product-name">Luxury Dinning Table</h4>
+                    <p class="product-price">₹69,999</p>
+		<p>Feel Comfort</p>
+		<div class="fa fa-cart-plus cart-icon" onclick="addToCart(2)"></div>
 
+		  
                 </div>
 
-                <div class="card">
-                    <img src="sofa3.jpeg" alt="">
-                    <p>Luxury Sofa's</p>
-                    <p>Starting At ₹99,999 Only</p>
-                    <p>Feel Comfort</p>
+                <div class="card" id="sofa">
+                   <img src="file:///E:/Wallpapers/sofa3.jpeg" class="product-image" alt="">
+                    <h4 class="product-name">Luxury Sofa</h4>
+                    <p class="product-price">₹99,999</p>
+			<p>Feel Comfort</p>
+		<div class="fa fa-cart-plus cart-icon" onclick="addToCart(3)"></div>
 
+		    
+                </div>
+                <div class="card" id="chair">
+                   <img src="file:///E:/Wallpapers/chair3.jpeg" class="product-image" alt="">
+                    <h4 class="product-name">Luxury Chair</h4>
+                    <p class="product-price">₹39,999</p>
+			<p>Feel Comfort</p>
+		<div class="fa fa-cart-plus cart-icon" onclick="addToCart(4)"></div>
+
+             	
                 </div>
                 <div class="card">
-                    <img src="chair3.jpeg" alt="">
-                    <p>Luxury Chair's</p>
-                    <p>Starting At ₹39,999 Only</p>
-                    <p>Feel Comfort</p>
+                   <img src="file:///E:/Wallpapers/table1" class="product-image" alt="">
+                    <h4 class="product-name">Luxury Dinning Table</h4>
+                    <p class="product-price">₹49,999<p>
+			<p>Feel Comfort</p>
+		<div class="fa fa-cart-plus cart-icon" onclick="addToCart(5)"></div>
 
-                </div>
-                <div class="card">
-                    <img src="table1" alt="">
-                    <p>Luxury Dinning Table's</p>
-                    <p>Starting At ₹49,999 Only</p>
-                    <p>Feel Comfort</p>
-
+		   
                 </div>
             </div>
         </div>
 
-        <div class="new" id="arrival">
+       <div class="new" id="arrival">
             <div class="head">
                 <h1>New <span>Arrival</span></h1>
             </div>
             <div class="arrivals">
                 <div class="arrivalCard">
-                    <img src="sofa1" alt="">
-                    <h3>Exciting Offer's</h3>
-                    <p>Shop Now At Lowest Price</p>
+                    <img src="file:///E:/Wallpapers/sofa1" alt="">
+                    <h3>Office Sofa</h3>
+                    <p>₹99,999</p>
+			<p>Feel Comfort</p>
+  			<div class="fa fa-cart-plus cart-icon" onclick="addToCart(6)"></div>
+		
                 </div>
                 <div class="arrivalCard">
-                    <img src="table2.jpeg" alt="">
-                    <h3>Exciting Offer's</h3>
-                    <p>Shop Now At Lowest Price</p>
+                    <img src="file:///E:/Wallpapers/table2.jpeg" alt="">
+                    <h3>Study Table</h3>
+                    <p>₹49,999</p>
+			<p>Feel Comfort</p>
+		<div class="fa fa-cart-plus cart-icon" onclick="addToCart(7)"></div>
+		  
                 </div>
-                <div class="arrivalCard">
-                    <img src="chair1.jpeg" alt="">
-                    <h3>Exciting Offer's</h3>
-                    <p>Shop Now At Lowest Price</p>
+              <div class="arrivalCard" id="arrivalcard">
+                    <img src="file:///E:/Wallpapers/chair1.jpeg" alt="">
+                    <h3>Luxury Chair</h3>
+                    <p>₹1,49,999</p>
+			<p>Feel Comfort</p>
+		<div class="fa fa-cart-plus cart-icon" onclick="addToCart(8)"></div>
+		
+                
                 </div>
             </div>
         </div>
+
 
         <div id="partner">
             <div class="head">
@@ -129,21 +241,21 @@
             </div>
             <div class="partners">
                  <div class="brand">
-                    <img src="IKEA-Logo.png" alt="">
+                    <img src="file:///E:/Wallpapers/IKEA-Logo.png" alt="">
                  </div>
                  <div class="brand">
-                    <img src="Amazon_(company)-Logo..png" alt="">
+                    <img src="file:///E:/Wallpapers/Amazon_(company)-Logo..png" alt="">
 
                  </div>
                  <div class="brand">
-                <img src="Godrej-Interio-Logo-PNG@.png" alt="">
+                <img src="file:///E:/Wallpapers/Godrej-Interio-Logo-PNG@.png" alt="">
 
                  </div>
                  <div class="brand">
-                    <img src="Nilkamal_Furniture_Logo_png.webp" alt="">
+                    <img src="file:///E:/Wallpapers/Nilkamal_Furniture_Logo_png.webp" alt="">
                  </div>
                  <div class="brand">
-                    <img src="logo_lotus.png" alt="">
+                    <img src="file:///E:/Wallpapers/logo_lotus.png" alt="">
                  </div>
                  
             </div>
@@ -154,12 +266,12 @@
                 <h1>About <span>Us</span></h1>
             </div>
             <div class="about">
-                <img src="about%20furniture.jpeg" alt="">
+                <img src="file:///E:/Wallpapers/about%20furniture.jpeg" alt="">
                 <div class="aboutText">
                     <h2>We Build Furniture By Heart For You</h2>
-                    <p>Welcome to Funiq! We're all about creating stylish and unique furniture that makes your home feel special. Our pieces are designed to be both beautiful and practical, made with care and quality materials.</p>
+                    <p>Welcome to Furniq! We're all about creating stylish and unique furniture that makes your home feel special. Our pieces are designed to be both beautiful and practical, made with care and quality materials.</p>
 
-                    <p>At Funiq, we know that furniture is more than just something you use; it's part of your home and your life. That's why we focus on crafting items that you'll love for years to come.</p>
+                    <p>At Furniq, we know that furniture is more than just something you use; it's part of your home and your life. That's why we focus on crafting items that you'll love for years to come.</p>
 
 		    <p>We're here to help you find the perfect furniture for your space, with friendly customer service and support every step of the way.</p>
 
@@ -172,7 +284,7 @@
         <div class="footer">
             <div class="text">
                 <h3>About Us</h3>
-                <p>Welcome to Funiq! We're all about<br>
+                <p>Welcome to Furniq! We're all about<br>
                    creating stylish and unique <br>
                    furniture that makes your home<br> 
                    feel special. <br><br>
@@ -198,7 +310,6 @@
             </div>
         </div>
     </div>
-    <script src="Furniq.js"></script>
+    <script src="Furniq js.js"></script>
 </body>
 </html>
-
